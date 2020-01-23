@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import ARKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var sceneView: ARSCNView!
+    let bodyTracking = ARBodyTrackingConfiguration()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        bodyTracking.automaticSkeletonScaleEstimationEnabled = true 
+        self.sceneView.session.run(bodyTracking)
         // Do any additional setup after loading the view.
     }
 
